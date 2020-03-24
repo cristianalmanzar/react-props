@@ -12,14 +12,26 @@ class Hello extends Component {
 
 class Text extends Component {
   render () {
+    const 
+    {
+      arrayOfNumbers,
+      header,
+      number,
+      multiply,
+      text,
+      object
+    } = this.props
+
     const isShown = this.props.boolean ? 'Valid': 'Invalid'
+    const mappedNumbers = arrayOfNumbers.map(multiply)
     return (
       <div>
-        <p>{this.props.text}</p>
-        <p>{this.props.number}</p>
+        {header}
+        <p>{text}</p>
+        <p>{number}</p>
         <p>{isShown}</p>
-        <p>{this.props.arrayOfNumbers.join(', ')}</p>
-        <p>{this.props.object.name + ' ' + this.props.object.lastname}</p>
+        <p>{mappedNumbers.join(', ')}</p>
+        <p>{object.name + ' ' + object.lastname}</p>
       </div>
     )
   }
@@ -46,7 +58,10 @@ function App() {
           object={{name: 'Cristian', lastname: 'Almanzar'}}
           boolean={true}
           number={11}
-          text='Example of test'>
+          text='Example of test'
+          header = {<h4>Passing elements thow props</h4>}
+          multiply={(number) => number * 2}
+          >
         </Text>
       </header>
     </div>
